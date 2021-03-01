@@ -16,5 +16,10 @@ public interface PageController extends Controller {
      * @return 视图地址路径
      * @throws Throwable 异常发生时
      */
-    String execute(HttpServletRequest request, HttpServletResponse response) throws Throwable;
+    @Deprecated
+    default String execute(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+        return null;
+    }
+
+    String register(HttpServletRequest request, HttpServletResponse response) throws Throwable;
 }
