@@ -19,6 +19,17 @@ public class DBConnectionManager {
 
     private Connection connection;
 
+    public DBConnectionManager() {
+        try {
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            Driver driver = DriverManager.getDriver("jdbc:derby:/db/user-platform;create=true");
+            Connection connection = driver.connect("jdbc:derby:/db/user-platform;create=true", new Properties());
+            this.connection = connection;
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void setConnection(Connection connection) {
         this.connection = connection;
     }

@@ -1,28 +1,44 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
     <jsp:directive.include
             file="/WEB-INF/jsp/prelude/include-head-meta.jspf"/>
     <title>My Home Page</title>
-    <script src="static/css/bootstrap-4.6.0.min.css"></script>
 </head>
 <body>
 <div class="container-lg">
     <!-- Content here -->
-    <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password">
-    </div>
-    <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name">
-    </div>
-    <div class="mb-3">
-        <label for="phoneNumber" class="form-label">Phone Number</label>
-        <input type="text" class="form-control" id="phoneNumber">
-    </div>
+    <h2>注册账户成功~ </h2>
+    <p>ID : ${user.id}</p>
+    <p>Email : ${user.email}</p>
+    <p>Password : ${user.password}</p>
+    <p>Name : ${user.name}</p>
+    <p>PhoneNumber : ${user.phoneNumber}</p>
+
+    <br>
+    <br>
+    <h2>当前已注册用户</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Email</th>
+            <%--            <th scope="col">Password</th>--%>
+            <th scope="col">Name</th>
+            <th scope="col">Phone Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="u" items="${users}">
+            <tr>
+                <td>${u.id}</td>
+                <td>${u.email}</td>
+                    <%--                <td>${u.password}</td>--%>
+                <td>${u.name}</td>
+                <td>${u.phoneNumber}</td>
+            </tr>
+        </c:forEach>
+
+        </tbody>
+    </table>
 </div>
 </body>
